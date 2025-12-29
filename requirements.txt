@@ -1,8 +1,8 @@
 streamlit
 Pillow
 requests
-tensorflow==2.17.0
-keras==3.4.1
+tensorflow>=2.20.0
+keras>=3.4.1
 pandas
 numpy<2.0.0
 opencv-python-headless
