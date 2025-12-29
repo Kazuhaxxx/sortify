@@ -1,9 +1,9 @@
 streamlit
 Pillow
 requests
-tensorflow>=2.20.0
-keras>=3.4.1
+tensorflow
+keras
 pandas
-numpy<2.0.0
+numpy
 opencv-python-headless
 streamlit-webrtc
