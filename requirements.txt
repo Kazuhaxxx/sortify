@@ -5,4 +5,5 @@ tensorflow
 keras
 pandas
 numpy
+opencv-python
 streamlit-webrtc
