@@ -1,9 +1,7 @@
-streamlit
-Pillow
-requests
-tensorflow
-keras
-pandas
-numpy
-opencv-python-headless
-streamlit-webrtc
+streamlit==1.52.2
+tensorflow==2.13.0
+pillow==10.0.0
+opencv-python-headless==4.8.1.78
+numpy==1.24.3
+keras==2.13.0
+protobuf==3.20.0
