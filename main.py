@@ -9,6 +9,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Flatten, Dense, BatchNormalization, Dropout
 from tensorflow.keras.applications import MobileNetV2
 from streamlit_webrtc import webrtc_streamer, VideoTransformerBase
+import os
 
 # 1. SETUP & UI CONFIGURATION
 warnings.filterwarnings("ignore")
@@ -41,7 +42,7 @@ def classify(image, model, class_names):
     image = image.resize((224, 224))
     img_array = np.array(image) / 255.0
     img_array = np.expand_dims(img_array, axis=0)
-    predictions = model.predict(img_array)
+    predictions = model.predict(img_array, verbose=0)
     index = np.argmax(predictions)
     return class_names[index], predictions[0][index]
 
@@ -61,7 +62,14 @@ def get_model():
         Dense(len(class_names), activation='softmax')
     ])
     
-    model.load_weights('MobileNetV2_811.keras')
+    # Try to load custom weights, fallback to base model if not available
+    weights_path = 'MobileNetV2_811.keras'
+    if os.path.exists(weights_path):
+        try:
+            model.load_weights(weights_path)
+        except Exception as e:
+            st.warning(f"⚠️ Could not load custom weights: {str(e)}")
+    
     return model
 
 model = get_model()
